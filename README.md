@@ -132,7 +132,7 @@ outputs = multiscale_forward(forward_feature, inputs, scales=[1, 2], num_prefix_
 print(outputs.shape)  # 1*50*1536
 ```
 
-**Example: for Training**
+## Example: for Training
 
 Considering the shape of an image batch is [B, 3, 1344, 1344] and the ViT model is trained on 448x448 images.
 
