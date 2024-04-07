@@ -132,6 +132,23 @@ outputs = multiscale_forward(forward_feature, inputs, scales=[1, 2], num_prefix_
 print(outputs.shape)  # 1*50*1536
 ```
 
+**Example: for Training**
+
+Considering the shape of an image batch is [B, 3, 1344, 1344] and the ViT model is trained on 448x448 images.
+
+```python
+from s2wrapper.core import create_multiscale_images, merge_multiscale_features
+
+img_sizes = [448, 1344]
+max_split_size = 448
+bs = images.shape[0]
+
+multiscale_images, num_splits = create_multiscale_images(images,
+                                                         img_sizes=image_sizes,
+                                                         max_split_size=max_split_size)
+multiscale_feats = model(multiscale_images)
+image_feats = merge_mutliscale_features(multiscale_feats, bs, num_splits)
+```
 
 ## Citation
 
